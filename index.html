@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Расписание Занятий</title>
+<style>
+  body {
+    font-family: sans-serif;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1ffff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(68, 68, 70, 0.267);
+    z-index: 1;
+  }
+
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown-content a:hover {background-color: #ddd;}
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  .schedule-table th, .schedule-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+  .schedule-table th {
+    background-color: #f2f2f2;
+  }
+</style>
+</head>
+<body>
+
+<br><h1>Расписание Занятий</h1></br>
+
+<div class="dropdown">
+  <span>Понедельник</span>
+  <div class="dropdown-content">
+    <a href="1.html?group=group1">ВЕБ1</a>
+    <a href="1.html?group=group2">ВЕБ2</a>
+  </div>
+</div>
+
+<div class="dropdown">
+<span>Вторник</span>
+  <div class="dropdown-content">
+    <a href="2.html?group=group1">ВЕБ1</a>
+    <a href="2.html?group=group2">ВЕБ2</a>
+  </div>
+</div>
+
+<div class="dropdown">
+  <span>Среда</span>
+  <div class="dropdown-content">
+    <a href="3.html?group=group1">ВЕБ1</a>
+    <a href="3.html?group=group2">ВЕБ2</a>
+  </div>
+</div>
+
+<div class="dropdown">
+  <span>Четверг</span>
+  <div class="dropdown-content">
+    <a href="4.html?group=group1">ВЕБ1</a>
+    <a href="4.html?group=group2">ВЕБ2</a>
+  </div>
+</div>
+
+<div class="dropdown">
+  <span>Пятница</span>
+  <div class="dropdown-content">
+    <a href="5.html?group=group1">ВЕБ1</a>
+    <a href="5.html?group=group2">ВЕБ2</a>
+  </div>
+</div>
+
+<script>
+  // Небольшой JavaScript для предотвращения перехода по ссылке, если вы просто хотите увидеть выпадающий список
+  document.querySelectorAll('.dropdown > span').forEach(span => {
+    span.addEventListener('click', (event) => {
+      event.preventDefault(); // Отменяем переход по умолчанию, чтобы выпадающий список оставался открытым
+    });
+  });
+</script>
+
+</body>
+</html>

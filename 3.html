@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Расписание на Среду</title>
+<style>
+  body {
+    font-family: sans-serif;
+  }
+
+  .schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  .schedule-table th, .schedule-table td {
+    border: 3px solid #00b7ff;
+    padding: 10px;
+    text-align: left;
+  }
+
+  .schedule-table th {
+    background-color: #88e7ff;
+  }
+</style>
+</head>
+<body>
+
+<h1>Расписание на Среду</h1>
+
+<div id="schedule-container"></div>
+
+<script>
+  function getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+  }
+
+  const group = getParameterByName('group');
+
+  let scheduleData = {};
+
+  // Данные расписания (замените на свои)
+  scheduleData['group1'] = [
+    { time: '9:00-10:30', subject: 'Графический дизайн', room: '405' },
+    { time: '10:40-12:10', subject: 'Графический дизайн', room: '405' },
+    { time: '13:00-14:30', subject: 'Психология общения', room: '420' },
+    { time: '14:40-16:10', subject: '-', room: '-' },
+    { time: '16:20-17:50', subject: '-', room: '-' },
+  ];
+
+  scheduleData['group2'] = [
+    { time: '9:00-10:30', subject: '-', room: '-' },
+    { time: '10:40-12:10', subject: 'Иностранный язык в профессиональной деятельности', room: '205б' },
+    { time: '13:00-14:30', subject: 'Графический дизайн', room: '203' },
+    { time: '14:40-16:10', subject: 'Графический дизайн', room: '203' },
+    { time: '16:20-17:50', subject: 'Физическая культура', room: 'Спортзал' },
+  ];
+
+  function displaySchedule(group) {
+    const container = document.getElementById('schedule-container');
+    if (!group || !scheduleData[group]) {
+      container.innerHTML = '<p>Расписание для этой группы не найдено.</p>';
+      return;
+    }
+
+    const schedule = scheduleData[group];
+
+    let tableHTML = '<table class="schedule-table">';
+    tableHTML += '<thead><tr><th>Время</th><th>Предмет</th><th>Аудитория</th></tr></thead>';
+    tableHTML += '<tbody>';
+
+    schedule.forEach(item => {
+      tableHTML += `<tr><td>${item.time}</td><td>${item.subject}</td><td>${item.room}</td></tr>`;
+    });
+
+    tableHTML += '</tbody></table>';
+    container.innerHTML = tableHTML;
+  }
+
+  if (group) {
+    displaySchedule(group);
+  } else {
+    document.getElementById('schedule-container').innerHTML = '<p>Выберите группу.</p>';
+  }
+
+</script>
+
+</body>
+</html>
